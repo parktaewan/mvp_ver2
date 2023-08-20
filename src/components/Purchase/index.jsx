@@ -7,6 +7,7 @@ import {
   dataBaseAtom,
   selectedMainAtom,
 } from "@/src/atoms/dataAtom";
+import LocalStorage from "@/src/utils/localstorage/LocalStorage";
 
 const Purchase = () => {
   const activeId = useRecoilValue(activeIdAtom);
@@ -46,6 +47,8 @@ const Purchase = () => {
     };
 
     setDataBase(tmpDataBase);
+    LocalStorage.setItem("dataBase", JSON.stringify(tmpDataBase));
+
     console.log(tmpDataBase);
     console.log(dataBase);
   };

@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
+import LocalStorage from "@/src/utils/localstorage/LocalStorage";
 
 export default function login() {
   const [activeLogin, setActiveLogin] = useRecoilState(activeIdAtom);
@@ -25,6 +26,7 @@ export default function login() {
     loginData.map((it) => {
       if (it.id === id && it.pw === pw) {
         setActiveLogin(id);
+        LocalStorage.setItem("login", it.id);
         router.push("/");
       }
     });

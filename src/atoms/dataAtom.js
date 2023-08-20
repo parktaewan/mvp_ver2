@@ -7,7 +7,7 @@ const activeLoginAtom = atom({
 
 const activeIdAtom = atom({
   key: "activeIdAtom",
-  default: "sanghyeon",
+  default: "",
 });
 
 const dataBaseAtom = atom({

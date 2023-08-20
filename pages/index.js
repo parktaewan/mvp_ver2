@@ -12,12 +12,13 @@ import MainItemList from "@/src/components/MainItemList";
 import Purchase from "@/src/components/Purchase";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
+import LocalStorage from "@/src/utils/localstorage/LocalStorage";
 
 export default function Home() {
-  const activeLogin = useRecoilValue(activeIdAtom);
+  const [activeLogin, setActiveLogin] = useRecoilState(activeIdAtom);
   const [mainUrl, setMainUrl] = useState("");
-  const dataBase = useRecoilValue(dataBaseAtom);
+  const [dataBase, setDataBase] = useRecoilState(dataBaseAtom);
   const selectedMain = useRecoilValue(selectedMainAtom);
   const router = useRouter();
   const activeId = useRecoilValue(activeIdAtom);
@@ -28,9 +29,15 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // if (activeLogin === "") router.push("/login");
-    // else
-    a(activeId);
+    const localDataBase = LocalStorage.getItem("dataBase");
+    if (activeLogin === "") {
+      const ifLogin = LocalStorage.getItem("login");
+      if (ifLogin) {
+        setActiveLogin(ifLogin);
+        a(ifLogin);
+      } else router.push("/login");
+    } else a(activeId);
+    if (localDataBase) setDataBase(JSON.parse(localDataBase));
   }, []);
 
   if (activeId === "")
