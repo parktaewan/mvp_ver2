@@ -1,6 +1,5 @@
 import { activeIdAtom, activeRefundAtom } from "@/src/atoms/dataAtom";
-import Header from "@components/Header";
-import Refund from "@components/Refund";
+import Header from "@/src/components/Header";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -23,12 +22,12 @@ export default function refund() {
       <ItemWrapper>
         <Title>{`${refundData.title} 상품`}</Title>
         <Item>
-          <Refund
+          {/* <Refund
             url={refundData.url}
             brand={refundData.brand}
             title={refundData.title}
             name={refundData.name}
-          />
+          /> */}
         </Item>
       </ItemWrapper>
       <TextWrapper>
