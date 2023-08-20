@@ -1,4 +1,4 @@
-import { activeLoginAtom, activeRefundAtom } from "@atoms/dataAtom";
+import { activeIdAtom, activeRefundAtom } from "@/src/atoms/dataAtom";
 import Header from "@components/Header";
 import Refund from "@components/Refund";
 import styled from "@emotion/styled";
@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useRecoilValue } from "recoil";
 
 export default function refund() {
-  const activeLogin = useRecoilValue(activeLoginAtom);
+  const activeLogin = useRecoilValue(activeIdAtom);
   const [reason, setReason] = useState("");
   const router = useRouter();
   const refundData = useRecoilValue(activeRefundAtom);
